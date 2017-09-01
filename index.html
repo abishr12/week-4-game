@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+  <div class="container">
+
+    <div class="jumbotron">
+        <h1 class="text-center">jQuery Calculator</h1>
+        <h3 class="text-center">Welcome to Crystal Collector</h3>
+    </div>
+
+    <div>
+      <p>
+        You will be given a random number at the start of the game.
+
+        <br />
+
+        There are four crystals below. By clicking on a crystal you ad a specific amount of points to your total score.
+
+        <br />
+
+        The value of each crystal is hidden from you until you click on it.
+
+        <br />
+
+        Each time when the game starts, the game will change the values of each crystal.
+      </p>
+    </div>
+
+    <div class="row">
+
+
+        <!-- Calculator Panel -->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Jewels</h3>
+                </div>
+
+                <div class="panel-body">
+                  <button id="button-1" class="btn btn-primary number btn-sm jewel" value="1"><h1><img width= "100" height= "100" src= http://images.clipartpanda.com/jewel-clipart-RTA6j75gc.png /></h1></button>
+
+                  <button id="button-2" class="btn btn-primary number btn-sm jewel" value="1"><h1><img width= "100" height= "100" src= http://www.clker.com/cliparts/q/4/I/b/I/I/jewel-hi.png /></h1></button>
+
+                  <button id="button-3" class="btn btn-primary number btn-sm jewel" value="1"><h1><img width= "100" height= "100" src= http://diysolarpanelsv.com/images/clipart-gemstones-19.png></h1></button>
+
+                  <button id="button-4" class="btn btn-primary number btn-sm jewel" value="1"><h1><img width= "100" height= "100" src= http://cliparts.co/cliparts/gce/oj8/gceoj8a6i.png></h1></button>
+
+                </div>
+
+            </div>
+        </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Score</h3>
+                </div>
+                <div class="panel-body">
+                    <h1 id="score-number">0</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Goal</h3>
+                  </div>
+                  <div class="panel-body">
+                      <h1 id="goal-number"></h1>
+                      <div>
+                        <h2 id='wins' class= "pull-left">Wins: 0</h2>
+                        <br>
+                      </div>
+
+                      <div>
+                        <br>
+                        <br>
+                        <br>
+                        <h2 id='losses' class= "pull-left">Losses: 0</h2>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+
+  <script type="text/javascript">
+function startGame(){
+
+  $(document).ready(function() {
+    var randomVal = Math.floor(Math.random() * 9 + 3);
+    var randomVal2 = Math.floor(Math.random() * 9 + 3);
+    var randomVal3 = Math.floor(Math.random() * 9 + 3);
+    var randomVal4 = Math.floor(Math.random() * 9 + 3);
+    var randomNum = Math.floor(Math.random() * 50 + 20);
+    var goalNum = Math.floor(Math.random() * 50 + 20);
+    var scoreNum = 0;
+    var winNum= 0
+    var loseNum=0
+
+    $(".jewel").on("click", function() {
+      if (scoreNum === goalNum) {
+        alert("You win!");
+        winNum++
+        $('#wins').text('Wins: ' +winNum)
+        $('.jewel').trigger("reset")
+        $("#score-number").text(0)
+      }
+
+      if (scoreNum > goalNum) {
+        alert("You lose!");
+        loseNum++
+        $('#losses').text('Losses: ' +loseNum)
+        $('.jewel').trigger("reset")
+        $("#score-number").text(0)
+      }
+
+    });
+
+    $("#goal-number").text(goalNum);
+
+    $("#button-1").on("click", function() {
+      $("#button-1").val(randomVal);
+      scoreNum = scoreNum + randomVal;
+
+      $("#score-number").text(scoreNum);
+
+      console.log(scoreNum);
+    });
+
+    $("#button-2").on("click", function() {
+      $("#button-2").val(randomVal2);
+      scoreNum = scoreNum + randomVal2;
+
+      $("#score-number").text(scoreNum);
+      console.log(scoreNum);
+    });
+
+    $("#button-3").on("click", function() {
+      $("#button-3").val(randomVal3);
+      scoreNum = scoreNum + randomVal3;
+
+      $("#score-number").text(scoreNum);
+      console.log(scoreNum);
+    });
+
+    $("#button-4").on("click", function() {
+      $("#button-4").val(randomVal4);
+      scoreNum = scoreNum + randomVal4;
+
+      $("#score-number").text(scoreNum);
+      console.log(scoreNum);
+    });
+  });
+}
+
+startGame()
+</script>
+  </body>
+</html>
