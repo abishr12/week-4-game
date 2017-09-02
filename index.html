@@ -98,77 +98,7 @@
     </div>
 
 
-  <script type="text/javascript">
-function startGame(){
+<script type="text/javascript" src="javascript/game.js"></script>
 
-  $(document).ready(function() {
-    var randomVal = Math.floor(Math.random() * 9 + 3);
-    var randomVal2 = Math.floor(Math.random() * 9 + 3);
-    var randomVal3 = Math.floor(Math.random() * 9 + 3);
-    var randomVal4 = Math.floor(Math.random() * 9 + 3);
-    var randomNum = Math.floor(Math.random() * 50 + 20);
-    var goalNum = Math.floor(Math.random() * 50 + 20);
-    var scoreNum = 0;
-    var winNum= 0
-    var loseNum=0
-
-    $(".jewel").on("click", function() {
-      if (scoreNum === goalNum) {
-        alert("You win!");
-        winNum++
-        $('#wins').text('Wins: ' +winNum)
-        $('.jewel').trigger("reset")
-        $("#score-number").text(0)
-      }
-
-      if (scoreNum > goalNum) {
-        alert("You lose!");
-        loseNum++
-        $('#losses').text('Losses: ' +loseNum)
-        $('.jewel').trigger("reset")
-        $("#score-number").text(0)
-      }
-
-    });
-
-    $("#goal-number").text(goalNum);
-
-    $("#button-1").on("click", function() {
-      $("#button-1").val(randomVal);
-      scoreNum = scoreNum + randomVal;
-
-      $("#score-number").text(scoreNum);
-
-      console.log(scoreNum);
-    });
-
-    $("#button-2").on("click", function() {
-      $("#button-2").val(randomVal2);
-      scoreNum = scoreNum + randomVal2;
-
-      $("#score-number").text(scoreNum);
-      console.log(scoreNum);
-    });
-
-    $("#button-3").on("click", function() {
-      $("#button-3").val(randomVal3);
-      scoreNum = scoreNum + randomVal3;
-
-      $("#score-number").text(scoreNum);
-      console.log(scoreNum);
-    });
-
-    $("#button-4").on("click", function() {
-      $("#button-4").val(randomVal4);
-      scoreNum = scoreNum + randomVal4;
-
-      $("#score-number").text(scoreNum);
-      console.log(scoreNum);
-    });
-  });
-}
-
-startGame()
-</script>
   </body>
 </html>
